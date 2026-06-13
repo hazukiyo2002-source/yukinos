@@ -1016,11 +1016,7 @@
         </p>
       </div>
 
-      <form id="orderForm" name="order" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-aos="fade-up" novalidate>
-        <input type="hidden" name="form-name" value="order">
-        <p class="hidden" style="display:none;">
-          <label>この項目は入力しないでください<input name="bot-field"></label>
-        </p>
+      <form id="orderForm" data-aos="fade-up" novalidate>
 
         <!-- お名前・フリガナ -->
         <div class="form-grid-2">
@@ -1623,16 +1619,17 @@
       formData.append('消費税(10%)', document.getElementById('orderTax').textContent);
       formData.append('送料', '¥800');
       formData.append('合計（目安）', orderTotal.textContent);
+      formData.append('_subject', "YUKINO' オーダーフォームより新規ご注文");
 
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.textContent = '送信中…';
 
       try {
-        const res = await fetch('/', {
+        const res = await fetch('https://formspree.io/f/xlgkowdd', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
+          headers: { 'Accept': 'application/json' },
+          body: formData
         });
 
         if (res.ok) {
