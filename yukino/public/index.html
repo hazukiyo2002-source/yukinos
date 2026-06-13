@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="YUKINOが手がける一点一点丁寧に手作りされた高級ブローチ。特別な贈り物や、自分へのご褒美に。">
+  <meta name="keywords" content="ブローチ, ハンドメイド, アクセサリー, ジュエリー, ギフト, YUKINO">
+  <meta property="og:title" content="YUKINO | Handmade Brooch Collection">
+  <meta property="og:description" content="一点一点、心を込めて手作りされた高級ブローチ">
+  <meta property="og:type" content="website">
+  <title>YUKINO | Handmade Brooch Collection</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Animate.css v4.1.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- AOS v2.3 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Google Fonts: Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================
+       Base & Reset
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background: #f7f4ee;
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    /* =====================
+       Ruby / Furigana — ブラウザ標準表示で行揃えを崩さない
+    ===================== */
+    ruby {
+      display: ruby;
+      ruby-align: center;
+    }
+    rt {
+      display: ruby-text;
+      font-size: 0.52em;
+      letter-spacing: 0.05em;
+      opacity: 0.72;
+      ruby-position: over;
+    }
+
+    /* =====================
+       Color Variables
+    ===================== */
+    :root {
+      --gold:        #ab8c5e;
+      --gold-light:  #c9b08a;
+      --gold-dark:   #80693f;
+      --navy:        #000000;
+      --navy-mid:    #2e2c29;
+      --cream:       #f7f4ee;
+      --champagne:   #ece8e1;
+      --ruby:        #6b5b47;
+      --text-muted:  #000000;
+    }
+
+    /* =====================
+       Typography Helpers
+    ===================== */
+    .font-display { font-family: "Noto Sans JP", sans-serif; }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #8f7651 0%, #c9b08a 40%, #ab8c5e 65%, #8f7651 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-title {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.25;
+    }
+    .gold-diamond { color: #6b6b6b; font-size: 0.75rem; letter-spacing: 0.35em; }
+    .gold-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+    }
+    .gold-line-left { margin: 1.5rem 0; }
+
+    /* =====================
+       Buttons
+    ===================== */
+    .btn-gold {
+      display: inline-block;
+      background: linear-gradient(135deg, #5a5a5a, #6b6b6b, #5a5a5a);
+      color: #f7f4ee;
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      padding: 1rem 2.8rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #6b6b6b, #8a8a8a, #6b6b6b);
+      box-shadow: 0 8px 30px rgba(107,107,107,0.35);
+      transform: translateY(-2px);
+    }
+    .btn-outline-gold {
+      display: inline-block;
+      background: transparent;
+      color: #6b6b6b;
+      border: 1px solid #6b6b6b;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      padding: 0.55rem 1.2rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-gold:hover {
+      background: #6b6b6b;
+      color: #f7f4ee;
+    }
+    .btn-gold-full {
+      width: 100%;
+      text-align: center;
+      padding: 1.1rem;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+    }
+
+    /* =====================
+       Navigation
+    ===================== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.6rem 2rem;
+      transition: all 0.4s ease;
+    }
+    #navbar.scrolled {
+      padding: 0.9rem 2rem;
+      background: rgba(30,22,16, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(171,140,94,0.2);
+    }
+    #navbar.scrolled .nav-logo-en { color: #ffffff; }
+    #navbar.scrolled .nav-logo-sub { color: #ffffff; }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo-en {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1.7rem; font-weight: 300; letter-spacing: 0.35em;
+      text-decoration: none;
+      line-height: 1;
+      color: #6b6b6b;
+    }
+    .nav-logo-sub {
+      font-size: 0.55rem; letter-spacing: 0.3em;
+      color: #6b6b6b;
+      text-align: center; margin-top: 2px;
+    }
+    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+    .nav-link {
+      color: rgba(0,0,0,0.82);
+      text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.12em;
+      position: relative; transition: color 0.3s;
+    }
+    #navbar.scrolled .nav-link { color: rgba(255,255,255,0.88); }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #6b6b6b; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 1px; background: rgba(0,0,0,0.82); display: block;
+      transition: all 0.3s ease;
+    }
+    #navbar.scrolled .hamburger span { background: white; }
+
+    /* Mobile Menu */
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(30,22,16,0.97);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.2rem;
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none; cursor: pointer;
+      color: white; font-size: 1.5rem;
+    }
+    .mobile-link {
+      color: white; text-decoration: none;
+      font-size: 1.25rem; letter-spacing: 0.2em;
+      transition: color 0.3s;
+    }
+    .mobile-link:hover { color: #6b6b6b; }
+
+    /* =====================
+       Hero
+    ===================== */
+    #hero {
+      height: 100vh; min-height: 700px;
+      background: #ffffff;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-content {
+      text-align: center; position: relative; z-index: 1;
+      padding: 2rem; max-width: 700px;
+    }
+    .hero-title {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 300; letter-spacing: 0.15em;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .hero-subtitle {
+      color: rgba(0,0,0,0.78);
+      font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+      letter-spacing: 0.28em; margin-bottom: 0.7rem;
+    }
+    .hero-desc {
+      color: rgba(0,0,0,0.55);
+      font-size: 0.9rem; letter-spacing: 0.08em;
+      max-width: 440px; margin: 0 auto 2.5rem; line-height: 2;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: rgba(107,107,107,0.65); text-align: center; animation: bounceY 2.2s infinite;
+    }
+    .scroll-hint-text { font-size: 0.65rem; letter-spacing: 0.25em; color: rgba(0,0,0,0.4); margin-bottom: 6px; }
+    @keyframes bounceY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+
+    /* Twinkling stars */
+    .star { position: absolute; width: 2px; height: 2px; background: var(--gold); border-radius: 50%; }
+
+    /* =====================
+       Sections
+    ===================== */
+    .section-pad { padding: 10rem 2rem; }
+    .section-pad-sm { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .container-sm { max-width: 900px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 6rem; }
+    .section-dark {
+      background: linear-gradient(135deg, #1c1b19 0%, #2e2c29 50%, #1c1b19 100%);
+      color: var(--cream);
+    }
+    .section-champagne { background: var(--champagne); }
+
+    /* =====================
+       Placeholder Image Boxes
+    ===================== */
+    .img-ph {
+      background: linear-gradient(135deg, #2e2c29 0%, #423f3a 50%, #2e2c29 100%);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .img-ph::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(171,140,94,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 70%, rgba(138,58,32,0.07) 0%, transparent 55%);
+    }
+    .ph-icon { color: rgba(171,140,94,0.45); width: 52px; height: 52px; position: relative; z-index: 1; }
+    .ph-label { color: rgba(107,107,107,0.35); font-size: 0.65rem; letter-spacing: 0.2em; margin-top: 0.7rem; position: relative; z-index: 1; }
+    .ph-tall { height: 520px; }
+    .ph-brooch { aspect-ratio: 1; width: 100%; }
+
+    /* =====================
+       About Section
+    ===================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    /* =====================
+       Collection / Brooch Grid
+    ===================== */
+    .brooch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .brooch-card {
+      background: #fefbf6;
+      border: 1px solid rgba(171,140,94,0.18);
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .brooch-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(171,140,94,0.06), transparent);
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    .brooch-card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 24px 64px rgba(171,140,94,0.22);
+      border-color: rgba(171,140,94,0.5);
+    }
+    .brooch-card:hover::after { opacity: 1; }
+    .brooch-card .brooch-photo { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .brooch-card:hover .brooch-photo { transform: scale(1.04); }
+    .brooch-photo-wrap { overflow: hidden; }
+    .brooch-body { padding: 1.4rem; }
+    .brooch-series { font-size: 0.6rem; letter-spacing: 0.18em; color: #6b6b6b; margin-bottom: 0.25rem; }
+    .brooch-name { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; font-weight: 500; }
+    .brooch-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+    .brooch-footer { display: flex; justify-content: space-between; align-items: center; }
+    .brooch-price { font-size: 1.05rem; color: var(--navy); font-weight: 500; }
+
+    /* =====================
+       Craft / Craftsmanship
+    ===================== */
+    .craft-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .craft-card { text-align: center; padding: 2.5rem 1.5rem; border: 1px solid rgba(171,140,94,0.2); }
+    .craft-icon { width: 52px; height: 52px; color: #6b6b6b; margin: 0 auto 1.5rem; }
+
+    /* =====================
+       Gallery Strip
+    ===================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item img { width: 100%; height: 320px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    /* =====================
+       Order Process Steps
+    ===================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    /* =====================
+       個数コントロール
+    ===================== */
+    .qty-ctrl { display: flex; align-items: center; gap: .25rem; flex-shrink: 0; }
+    .qty-btn {
+      width: 24px; height: 24px;
+      background: transparent;
+      border: 1px solid rgba(171,140,94,.45);
+      color: #6b6b6b;
+      font-size: .9rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+      flex-shrink: 0; padding: 0;
+    }
+    .qty-btn:hover { background: rgba(171,140,94,.12); border-color: var(--gold); }
+    .qty-num { font-size: .82rem; color: var(--navy); min-width: 18px; text-align: center; font-weight: 500; }
+    .step-card { text-align: center; position: relative; }
+    .step-num {
+      width: 58px; height: 58px; border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1.3rem; color: #6b6b6b;
+    }
+    .step-connector {
+      position: absolute; top: 29px;
+      left: calc(50% + 30px); right: calc(-50% + 30px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(171,140,94,0.25));
+    }
+    .step-label { font-size: 0.65rem; letter-spacing: 0.2em; color: #6b6b6b; margin-bottom: 0.6rem; }
+    .step-title { font-size: 1.05rem; color: var(--cream); margin-bottom: 0.5rem; font-weight: 400; }
+    .step-desc { font-size: 0.8rem; color: rgba(250,246,240,0.6); line-height: 1.8; }
+
+    /* =====================
+       Order Form
+    ===================== */
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-group { margin-bottom: 1.4rem; }
+    .form-label {
+      display: block; font-size: 0.82rem;
+      letter-spacing: 0.06em; color: #000000; margin-bottom: 0.5rem;
+    }
+    .required-badge {
+      display: inline-block;
+      background: var(--ruby); color: white;
+      font-size: 0.6rem; padding: 0.1rem 0.4rem;
+      margin-left: 0.4rem; vertical-align: middle; letter-spacing: 0.05em;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      border: 1px solid rgba(171,140,94,0.28);
+      background: rgba(255,255,255,0.85);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1rem; /* iOS 自動ズーム防止（16px以上が必要） */
+      color: #000000;
+      outline: none; transition: all 0.3s;
+      appearance: none; -webkit-appearance: none;
+      border-radius: 0; /* iOS の丸角リセット */
+      -webkit-border-radius: 0;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(171,140,94,0.1);
+    }
+    .form-textarea { min-height: 130px; resize: vertical; }
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '▼'; position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%);
+      color: #6b6b6b; font-size: 0.7rem; pointer-events: none;
+    }
+    .checkbox-group { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 0.3rem; }
+    .checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #000000; cursor: pointer; }
+    .checkbox-label input { accent-color: var(--gold); width: 16px; height: 16px; }
+    .form-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.6; }
+
+    /* 番号チェックボックス注文グリッド */
+    .order-check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid rgba(171,140,94,.28);
+    }
+    .order-check-item {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      padding: .75rem 1rem;
+      border-bottom: 1px solid rgba(171,140,94,.15);
+      border-right: 1px solid rgba(171,140,94,.15);
+      cursor: pointer;
+      transition: background .2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .order-check-item:nth-child(even) { border-right: none; }
+    .order-check-item:nth-last-child(-n+2) { border-bottom: none; }
+    .order-check-item:hover { background: rgba(171,140,94,.06); }
+    .order-check-item input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 17px; height: 17px;
+      flex-shrink: 0;
+    }
+    .order-check-item.checked { background: rgba(171,140,94,.1); }
+    .order-item-num {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: .8rem; color: #6b6b6b; letter-spacing: .08em;
+      flex-shrink: 0; width: 32px;
+    }
+    .order-item-name { font-size: .82rem; color: #000000; flex: 1; }
+    .order-item-price {
+      font-size: .8rem; color: var(--text-muted);
+      flex-shrink: 0; letter-spacing: .03em;
+    }
+    /* 合計表示 */
+    .order-total-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .9rem 1rem;
+      background: rgba(30,22,16,.04);
+      border: 1px solid rgba(171,140,94,.28);
+      border-top: none;
+      margin-bottom: 1.4rem;
+    }
+    .order-total-label { font-size: .82rem; color: #000000; letter-spacing: .05em; }
+    .order-total-price { font-size: 1.1rem; color: var(--navy); font-weight: 500; }
+    @media (max-width: 600px) {
+      .order-check-grid { grid-template-columns: 1fr; }
+      .order-check-item { border-right: none; }
+      .order-check-item:nth-last-child(1) { border-bottom: none; }
+      .order-check-item:nth-last-child(2) { border-bottom: 1px solid rgba(171,140,94,.15); }
+    }
+
+    /* =====================
+       FAQ Accordion
+    ===================== */
+    .faq-item { border-bottom: 1px solid rgba(171,140,94,0.2); }
+    .faq-q {
+      padding: 1.4rem 0;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; font-size: 0.95rem; letter-spacing: 0.04em;
+      transition: color 0.3s;
+      min-height: 48px; /* タップ領域確保 */
+      -webkit-tap-highlight-color: transparent;
+    }
+    .faq-q:hover { color: #6b6b6b; }
+    .faq-icon { color: #6b6b6b; font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-a { display: none; padding-bottom: 1.4rem; color: var(--text-muted); line-height: 1.9; font-size: 0.88rem; }
+    .faq-a.open { display: block; }
+    .faq-q.active .faq-icon { transform: rotate(45deg); }
+
+    /* =====================
+       Contact / SNS
+    ===================== */
+    .sns-grid { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .sns-btn {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.9rem 2rem; border: 1px solid rgba(171,140,94,0.35);
+      text-decoration: none; color: var(--cream);
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+    .sns-btn:hover { background: rgba(171,140,94,0.12); border-color: var(--gold); }
+    .sns-icon { width: 20px; height: 20px; }
+
+    /* =====================
+       Footer
+    ===================== */
+    #footer {
+      background: #0a0804; color: rgba(250,246,240,0.5);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-logo {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 1.5rem; font-weight: 300; letter-spacing: 0.4em;
+      margin-bottom: 0.3rem;
+      color: #6b6b6b;
+    }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+    .footer-link { color: rgba(250,246,240,0.45); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; transition: color 0.3s; }
+    .footer-link:hover { color: #6b6b6b; }
+    .footer-copy { font-size: 0.72rem; letter-spacing: 0.1em; }
+
+    /* =====================
+       Responsive — タブレット (≤1024px)
+    ===================== */
+    @media (max-width: 1024px) {
+      .brooch-grid    { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid   { grid-template-columns: repeat(3, 1fr); }
+      .steps-grid     { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
+      .step-connector { display: none; }
+      .craft-grid     { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item img { height: 260px; }
+    }
+
+    /* =====================
+       Responsive — スマホ (≤768px)
+    ===================== */
+    @media (max-width: 768px) {
+      /* ナビ */
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+      #navbar     { padding: 1.2rem 1.2rem; }
+      #navbar.scrolled { padding: 0.8rem 1.2rem; }
+
+      /* セクション余白 */
+      .section-pad    { padding: 4rem 1.2rem; }
+      .section-pad-sm { padding: 3rem 1.2rem; }
+
+      /* コンテナ */
+      .container    { padding: 0; }
+      .container-sm { padding: 0; }
+
+      /* ヒーロー */
+      .hero-content { padding: 1.2rem; }
+      .hero-desc    { font-size: .82rem; }
+
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ph-tall    { height: 260px; }
+
+      /* コレクション */
+      .brooch-grid  { grid-template-columns: repeat(1, 1fr); gap: 1.2rem; }
+      .brooch-body  { padding: 1rem; }
+      .brooch-name  { font-size: .95rem; }
+      .brooch-price { font-size: .95rem; }
+      .brooch-desc  { font-size: .78rem; margin-bottom: .8rem; }
+      .btn-outline-gold { font-size: .75rem; padding: .5rem 1rem; }
+
+      /* ギャラリー */
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-item img { height: 160px; }
+
+      /* こだわり */
+      .craft-grid { grid-template-columns: 1fr; }
+      .craft-card { padding: 2rem 1.2rem; }
+
+      /* ギャラリー (768px) */
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item img { height: 200px; }
+
+      /* オーダーステップ */
+      .steps-grid   { grid-template-columns: 1fr; gap: 2rem; }
+      .step-card    { padding: 0 1rem; }
+
+      /* フォーム */
+      .form-grid-2  { grid-template-columns: 1fr; gap: 0; }
+      .form-input, .form-select, .form-textarea { font-size: .85rem; padding: .75rem 1rem; }
+      .checkbox-group { flex-direction: column; gap: .8rem; }
+
+      /* SNS */
+      .sns-grid { flex-direction: column; align-items: center; }
+      .sns-btn  { width: 100%; max-width: 280px; justify-content: center; }
+
+      /* フッター */
+      .footer-links { gap: 1rem; }
+      .footer-link  { font-size: .7rem; }
+
+      /* section-title */
+      .section-title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+    }
+
+    /* =====================
+       Responsive — 小型スマホ (≤480px)
+    ===================== */
+    @media (max-width: 480px) {
+      /* ヒーロー */
+      .hero-btns    { flex-direction: column; align-items: center; gap: .8rem; }
+      .hero-title   { letter-spacing: .2em; }
+      .hero-subtitle{ letter-spacing: .15em; }
+
+      /* ブローチグリッド */
+      .brooch-grid  { gap: .6rem; }
+      .brooch-body  { padding: .75rem; }
+      .brooch-name  { font-size: .82rem; }
+      .brooch-footer{ flex-direction: column; align-items: flex-start; gap: .5rem; }
+
+      /* ギャラリー (480px) */
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
+      .gallery-item img { height: 160px; }
+
+      /* フォームラベル */
+      .form-label { font-size: .78rem; }
+
+      /* フッター */
+      .footer-links { gap: .7rem; }
+
+      /* SNS */
+      .sns-btn { padding: .8rem 1.5rem; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVIGATION
+  =========================================== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <!-- ロゴ -->
+      <a href="#hero" style="text-decoration:none;">
+        <div class="nav-logo-en">YUKINO’</div>
+        <div class="nav-logo-sub">HANDMADE BROOCH</div>
+      </a>
+
+      <!-- デスクトップ ナビリンク -->
+      <div class="nav-links">
+        <a href="#about"       class="nav-link"><ruby>ブランド<rt>ぶらんど</rt></ruby>について</a>
+        <a href="#collection"  class="nav-link">コレクション</a>
+        <a href="#order-guide" class="nav-link">オーダー</a>
+        <a href="#contact"     class="nav-link">お<ruby>問い合わせ<rt>といあわせ</rt></ruby></a>
+      </div>
+
+      <!-- ハンバーガー（モバイル） -->
+      <button class="hamburger" id="menuBtn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- モバイルメニュー -->
+  <div id="mobile-menu">
+    <button class="mobile-close" id="closeMenu" aria-label="閉じる">✕</button>
+    <a href="#about"       class="mobile-link" onclick="closeMobileMenu()"><ruby>ブランド<rt>ぶらんど</rt></ruby>について</a>
+    <a href="#collection"  class="mobile-link" onclick="closeMobileMenu()">コレクション</a>
+    <a href="#order-guide" class="mobile-link" onclick="closeMobileMenu()">オーダー</a>
+    <a href="#contact"     class="mobile-link" onclick="closeMobileMenu()">お<ruby>問い合わせ<rt>といあわせ</rt></ruby></a>
+  </div>
+
+
+  <!-- ==========================================
+       HERO
+  =========================================== -->
+  <section id="hero">
+    <!-- 輝く星エフェクト（JSで生成） -->
+    <div id="starsContainer" style="position:absolute;inset:0;pointer-events:none;"></div>
+
+    <div class="hero-content animate__animated animate__fadeIn">
+      <div class="gold-diamond" style="margin-bottom:1.4rem;">Handmade Brooch</div>
+
+      <h1 class="hero-title animate__animated animate__fadeInUp" style="animation-delay:.3s; color:#6b6b6b;">
+        YUKINO’
+      </h1>
+
+      <div class="hero-subtitle animate__animated animate__fadeInUp" style="animation-delay:.6s; margin-top:.8rem;">
+        いくつになっても、かわいい。
+      </div>
+
+      <p class="hero-desc animate__animated animate__fadeIn" style="animation-delay:.9s; margin-top:1.4rem;">
+        上品さの中に、<br>
+        遊び心のある可愛らしさを。<br><br>
+        身につけるだけで、<br>
+        少し気分が上がる。<br><br>
+        大人のためのアクセサリーを<br>
+        ひとつひとつ丁寧に制作しています。
+      </p>
+
+      <div class="hero-btns animate__animated animate__fadeInUp" style="animation-delay:1.2s;">
+        <a href="#collection" class="btn-gold">作品を見てみる</a>
+        <a href="#order-form" class="btn-outline-gold" style="padding:.95rem 2rem; font-size:.85rem;">オーダーについて</a>
+      </div>
+    </div>
+
+    <!-- スクロール矢印 -->
+    <div class="scroll-hint">
+      <div class="scroll-hint-text">SCROLL</div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       ABOUT / BRAND STORY
+  =========================================== -->
+  <section id="about" class="section-pad" style="background:var(--cream);">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- ブランドストーリー画像 -->
+        <div data-aos="fade-right">
+          <img src="assets/images/ブランドストーリー.PNG" alt="ブランドストーリー" loading="lazy" decoding="async"
+               style="width:100%; height:auto; border:1px solid rgba(171,140,94,.2);">
+        </div>
+
+        <!-- テキスト -->
+        <div data-aos="fade-left">
+          <div class="gold-diamond" style="margin-bottom:1rem;">Brand Story</div>
+          <h2 class="section-title" style="color:var(--navy); margin-bottom:.8rem;">
+            いくつになっても、<br>
+            かわいい。
+          </h2>
+          <div class="gold-line gold-line-left"></div>
+
+          <div style="margin-top:2rem; padding:1.5rem; border-left:2px solid var(--gold); background:rgba(171,140,94,.05);">
+            <div class="font-display" style="font-size:1.05rem; color:var(--navy); line-height:1.9; font-style:italic;">
+              "Every piece tells a story,<br>every detail carries love."
+            </div>
+            <div style="margin-top:.5rem; font-size:.75rem; color:#6b6b6b; letter-spacing:.2em;">— YUKINO’</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       COLLECTION — 16 BROOCHES
+  =========================================== -->
+  <section id="collection" class="section-pad section-champagne">
+    <div class="container">
+
+      <!-- セクションヘッダー -->
+      <div class="section-header" data-aos="fade-up">
+        <div class="gold-diamond">Standard Collection</div>
+        <h2 class="section-title" style="color:var(--navy); margin:.8rem 0;">
+          <ruby>定番<rt>ていばん</rt></ruby>コレクション
+        </h2>
+        <div class="gold-line"></div>
+        <p style="color:var(--text-muted); font-size:.85rem; letter-spacing:.12em;">
+          すべて<ruby>一点物<rt>いってんもの</rt></ruby>の<ruby>手作り<rt>てづくり</rt></ruby>ブローチです
+        </p>
+      </div>
+
+      <!-- 定番4品 -->
+      <div class="brooch-grid">
+
+        <!-- No.01 HELLO ¥6,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/Hello.PNG" alt="HELLOブローチ No.01" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.01</div>
+            <h3 class="brooch-name">HELLO</h3>
+            <p class="brooch-desc">言葉を形にしたユニークな一点。つけているだけで会話が生まれる、コミュニケーションブローチです。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥6,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- No.02 リップ ¥6,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/リップ.PNG" alt="リップブローチ No.02" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.02</div>
+            <h3 class="brooch-name">リップ</h3>
+            <p class="brooch-desc">鮮やかなリップをモチーフにした遊び心ある一点。コーデのアクセントに、さりげない華やかさをプラスします。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥6,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- No.03 ナンバー5 ¥6,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/ナンバー５.PNG" alt="ナンバー5ブローチ No.03" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.03</div>
+            <h3 class="brooch-name">ナンバー5</h3>
+            <p class="brooch-desc">数字モチーフのスタイリッシュな一点。お気に入りの数字をブローチにして、毎日のコーデのお守りに。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥6,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- No.04 Tシャツ ¥8,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/Tシャツ.PNG" alt="TシャツブローチNo.04" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.04</div>
+            <h3 class="brooch-name">Tシャツ</h3>
+            <p class="brooch-desc">ミニチュアTシャツをモチーフにした愛らしい一点。カジュアルなコーデに遊び心をそっと添えてくれます。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥8,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- No.05 ゴジラ ¥8,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/ゴジラ.PNG" alt="ゴジラブローチ No.05" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.05</div>
+            <h3 class="brooch-name">ゴジラ</h3>
+            <p class="brooch-desc">迫力のゴジラをモチーフにした遊び心満載の一点。大人だからこそ堂々とつけたい、インパクト大の作品です。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥8,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- No.06 トランプ ¥8,000 -->
+        <div class="brooch-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="brooch-photo-wrap">
+            <img src="assets/images/トランプ.PNG" alt="トランプブローチ No.06" class="brooch-photo" loading="lazy" decoding="async">
+          </div>
+          <div class="brooch-body">
+            <div class="brooch-series">No.06</div>
+            <h3 class="brooch-name">トランプ</h3>
+            <p class="brooch-desc">トランプのカードをモチーフにした一点。ゲーム好きの方にも、コーデのアクセントとしても楽しめます。</p>
+            <div class="brooch-footer">
+              <span class="brooch-price">¥8,000<span style="font-size:.62rem;color:var(--text-muted);font-weight:400;margin-left:.3rem;">＋消費税</span></span>
+              <button class="btn-outline-gold">詳しく見る</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /brooch-grid -->
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       GALLERY
+  =========================================== -->
+  <section id="gallery" class="section-pad" style="background:#f7f4ee;">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <div class="gold-diamond">Gallery</div>
+        <h2 class="section-title" style="color:var(--navy); margin:.8rem 0;">
+          ギャラリー
+        </h2>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="0">
+          <img src="assets/images/bag.JPG" alt="バッグブローチ" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+          <img src="assets/images/gozira-omg.JPG" alt="ゴジラブローチ" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="assets/images/lip.JPG" alt="リップブローチ" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="0">
+          <img src="assets/images/nunber1-9.PNG" alt="ナンバーブローチ" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+          <img src="assets/images/T.JPG" alt="Tシャツブローチ" loading="lazy" decoding="async">
+        </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/images/trump.JPG" alt="トランプブローチ" loading="lazy" decoding="async">
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;" data-aos="fade-up">
+        <a href="https://www.instagram.com/yukinko835" target="_blank" rel="noopener" class="btn-outline-gold" style="padding:.8rem 2.5rem; font-size:.85rem; letter-spacing:.15em;">
+          @yukinko835 をフォローする
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       ORDER GUIDE
+  =========================================== -->
+  <section id="order-guide" class="section-pad section-dark">
+    <div class="container">
+
+      <div class="section-header" data-aos="fade-up">
+        <div class="gold-diamond">Order Guide</div>
+        <h2 class="section-title" style="margin:.8rem 0;">
+          オーダーの<ruby>流れ<rt>ながれ</rt></ruby>
+        </h2>
+        <div class="gold-line"></div>
+        <p style="color:rgba(250,246,240,.55); font-size:.85rem; letter-spacing:.1em;">
+          在庫がなければ2か月いただいております
+        </p>
+      </div>
+
+      <div class="steps-grid">
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-connector"></div>
+          <div class="step-num">01</div>
+          <div class="step-label">STEP 01</div>
+          <h3 class="step-title">フォームでご<ruby>注文<rt>ちゅうもん</rt></ruby></h3>
+          <p class="step-desc">下記のオーダーフォームより、ご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>作品<rt>さくひん</rt></ruby>・<ruby>個数<rt>こすう</rt></ruby>をご<ruby>注文<rt>ちゅうもん</rt></ruby>ください</p>
+        </div>
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-connector"></div>
+          <div class="step-num">02</div>
+          <div class="step-label">STEP 02</div>
+          <h3 class="step-title">ご<ruby>入金<rt>にゅうきん</rt></ruby></h3>
+          <p class="step-desc"><ruby>前払い<rt>まえばらい</rt></ruby>にてご<ruby>入金<rt>にゅうきん</rt></ruby>をお<ruby>願い<rt>ねがい</rt></ruby>いたします（<ruby>銀行振込<rt>ぎんこうふりこみ</rt></ruby>・PayPay対応）</p>
+        </div>
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-num">03</div>
+          <div class="step-label">STEP 03</div>
+          <h3 class="step-title"><ruby>制作<rt>せいさく</rt></ruby>・お<ruby>届け<rt>とどけ</rt></ruby></h3>
+          <p class="step-desc"><ruby>心を込めて<rt>こころをこめて</rt></ruby><ruby>制作後<rt>せいさくご</rt></ruby>、<ruby>丁寧に<rt>ていねいに</rt></ruby>ラッピングしてお<ruby>届け<rt>とどけ</rt></ruby>します</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       ORDER FORM
+  =========================================== -->
+  <section id="order-form" class="section-pad" style="background:var(--champagne);">
+    <div class="container-sm">
+
+      <div class="section-header" data-aos="fade-up">
+        <div class="gold-diamond">Order Form</div>
+        <h2 class="section-title" style="color:var(--navy); margin:.8rem 0;">
+          オーダー<ruby>表<rt>ひょう</rt></ruby>
+        </h2>
+        <div class="gold-line"></div>
+        <p style="color:var(--text-muted); font-size:.85rem; line-height:1.9;">
+          <span style="color:var(--ruby); font-size:.75rem; padding:.15rem .5rem; background:rgba(138,58,32,.08); border:1px solid rgba(138,58,32,.2);">必須</span>
+          &nbsp;の<ruby>項目<rt>こうもく</rt></ruby>は<ruby>必ずご入力<rt>かならずごにゅうりょく</rt></ruby>ください。<ruby>確認<rt>かくにん</rt></ruby>メールをお<ruby>送<rt>おく</rt></ruby>りします。
+        </p>
+      </div>
+
+      <form id="orderForm" data-aos="fade-up" novalidate>
+
+        <!-- お名前・フリガナ -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="name">
+              お<ruby>名前<rt>なまえ</rt></ruby><span class="required-badge">必須</span>
+            </label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="山田 花子" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="furigana">
+              フリガナ<span class="required-badge">必須</span>
+            </label>
+            <input type="text" id="furigana" name="furigana" class="form-input" placeholder="ヤマダ ハナコ" required>
+          </div>
+        </div>
+
+        <!-- メール・電話 -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="email">
+              メールアドレス<span class="required-badge">必須</span>
+            </label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="example@mail.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">お<ruby>電話番号<rt>でんわばんごう</rt></ruby></label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="090-0000-0000">
+          </div>
+        </div>
+
+        <!-- ご注文の作品番号（チェックボックス式） -->
+        <div class="form-group">
+          <label class="form-label">
+            ご注文の作品番号<span class="required-badge">必須</span>
+          </label>
+          <p class="form-note" style="margin-bottom:.8rem;">番号にチェックを入れてください。複数選択できます。</p>
+
+          <div class="order-check-grid" id="orderCheckGrid">
+            <label class="order-check-item" data-price="6000">
+              <input type="checkbox" name="items" value="01-HELLO" data-price="6000">
+              <span class="order-item-num">No.01</span>
+              <span class="order-item-name">HELLO</span>
+              <span class="order-item-price">¥6,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+            <label class="order-check-item" data-price="6000">
+              <input type="checkbox" name="items" value="02-リップ" data-price="6000">
+              <span class="order-item-num">No.02</span>
+              <span class="order-item-name">リップ</span>
+              <span class="order-item-price">¥6,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+            <label class="order-check-item" data-price="6000">
+              <input type="checkbox" name="items" value="03-ナンバー5" data-price="6000">
+              <span class="order-item-num">No.03</span>
+              <span class="order-item-name">ナンバー5</span>
+              <span class="order-item-price">¥6,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+            <label class="order-check-item" data-price="8000">
+              <input type="checkbox" name="items" value="04-Tシャツ" data-price="8000">
+              <span class="order-item-num">No.04</span>
+              <span class="order-item-name">Tシャツ</span>
+              <span class="order-item-price">¥8,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+            <label class="order-check-item" data-price="8000">
+              <input type="checkbox" name="items" value="05-ゴジラ" data-price="8000">
+              <span class="order-item-num">No.05</span>
+              <span class="order-item-name">ゴジラ</span>
+              <span class="order-item-price">¥8,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+            <label class="order-check-item" data-price="8000">
+              <input type="checkbox" name="items" value="06-トランプ" data-price="8000">
+              <span class="order-item-num">No.06</span>
+              <span class="order-item-name">トランプ</span>
+              <span class="order-item-price">¥8,000</span>
+              <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                <button type="button" class="qty-btn qty-minus">－</button>
+                <span class="qty-num">1</span>
+                <button type="button" class="qty-btn qty-plus">＋</button>
+              </div>
+            </label>
+          </div>
+
+          <!-- オプション選択ボックス -->
+          <div style="margin-top:.5rem;">
+            <div style="font-size:.7rem;color:#6b6b6b;letter-spacing:.14em;padding:.4rem 1rem;background:rgba(171,140,94,.05);border:1px solid rgba(171,140,94,.28);border-bottom:none;">OPTION</div>
+            <div class="order-check-grid" id="optionCheckGrid">
+              <label class="order-check-item" data-price="1000">
+                <input type="checkbox" name="option-items" value="color-change" data-price="1000">
+                <span class="order-item-name">カラー変更</span>
+                <span class="order-item-price">¥1,000</span>
+                <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                  <button type="button" class="qty-btn qty-minus">－</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-plus">＋</button>
+                </div>
+              </label>
+              <label class="order-check-item" data-price="1000">
+                <input type="checkbox" name="option-items" value="design-change" data-price="1000">
+                <span class="order-item-name">デザイン変更</span>
+                <span class="order-item-price">¥1,000</span>
+                <div class="qty-ctrl" onclick="event.preventDefault();event.stopPropagation();">
+                  <button type="button" class="qty-btn qty-minus">－</button>
+                  <span class="qty-num">1</span>
+                  <button type="button" class="qty-btn qty-plus">＋</button>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- その他ご要望 -->
+        <div class="form-group">
+          <label class="form-label" for="request">その他ご<ruby>要望<rt>ようぼう</rt></ruby>・ご<ruby>質問<rt>しつもん</rt></ruby></label>
+          <textarea id="request" name="request" class="form-textarea" placeholder="カスタムオーダーのご相談、その他ご要望など何でもお気軽にどうぞ"></textarea>
+        </div>
+
+        <!-- プライバシー同意 -->
+        <div class="form-group">
+          <label class="checkbox-label" style="font-size:.82rem; color:#000000;">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <span><a href="#" style="color:#6b6b6b; text-decoration:none;"><ruby>プライバシーポリシー<rt></rt></ruby></a>に<ruby>同意<rt>どうい</rt></ruby>する<span class="required-badge">必須</span></span>
+          </label>
+        </div>
+
+        <!-- 合計金額バー（小計・消費税・送料・合計） -->
+        <div class="order-total-bar" style="flex-direction:column;align-items:stretch;gap:.45rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="order-total-label">作品 小計</span>
+            <span style="font-size:.95rem;color:var(--text-muted);" id="orderSubtotal">¥0</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="order-total-label"><ruby>消費税<rt>しょうひぜい</rt></ruby>（10%）</span>
+            <span style="font-size:.95rem;color:var(--text-muted);" id="orderTax">¥0</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="order-total-label"><ruby>送料<rt>そうりょう</rt></ruby>（<ruby>一律<rt>いちりつ</rt></ruby>）</span>
+            <span style="font-size:.95rem;color:var(--text-muted);">¥800</span>
+          </div>
+          <div style="border-top:1px solid rgba(171,140,94,.2);padding-top:.45rem;display:flex;justify-content:space-between;align-items:center;">
+            <span class="order-total-label" style="font-weight:500;"><ruby>合計<rt>ごうけい</rt></ruby>（<ruby>目安<rt>めやす</rt></ruby>）</span>
+            <span class="order-total-price" id="orderTotal">¥800</span>
+          </div>
+        </div>
+
+        <!-- 送信ボタン -->
+        <div style="text-align:center; margin-top:2.5rem;">
+          <button type="submit" class="btn-gold btn-gold-full" style="max-width:380px; margin:0 auto; display:block;">
+            オーダーを<ruby>送信<rt>そうしん</rt></ruby>する
+          </button>
+          <p style="margin-top:1rem; font-size:.78rem; color:var(--text-muted); letter-spacing:.05em;">
+            <ruby>送信後<rt>そうしんご</rt></ruby>、2<ruby>営業日以内<rt>えいぎょうびいない</rt></ruby>にご<ruby>連絡<rt>れんらく</rt></ruby>いたします
+          </p>
+        </div>
+
+      </form>
+
+      <!-- 送信完了メッセージ（非表示→JS で表示） -->
+      <div id="formSuccess" style="display:none; text-align:center; padding:3rem 2rem; border:1px solid rgba(171,140,94,.35); background:rgba(171,140,94,.05); margin-top:2rem;">
+        <div class="gold-line" style="margin-top:0;"></div>
+        <h3 style="font-size:1.3rem; color:var(--navy); margin-bottom:.8rem; font-weight:400;">
+          ご<ruby>注文<rt>ちゅうもん</rt></ruby>ありがとうございます
+        </h3>
+        <p style="color:var(--text-muted); line-height:1.9; font-size:.9rem;">
+          2<ruby>営業日以内<rt>えいぎょうびいない</rt></ruby>にメールにてご<ruby>連絡<rt>れんらく</rt></ruby>いたします。<br>しばらくお<ruby>待ち<rt>まち</rt></ruby>ください。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       FAQ
+  =========================================== -->
+  <section id="faq" class="section-pad" style="background:#f7f4ee;">
+    <div class="container-sm">
+
+      <div class="section-header" data-aos="fade-up">
+        <div class="gold-diamond">FAQ</div>
+        <h2 class="section-title" style="color:var(--navy); margin:.8rem 0;">
+          よくある<ruby>質問<rt>しつもん</rt></ruby>
+        </h2>
+        <div class="gold-line"></div>
+      </div>
+
+      <div data-aos="fade-up">
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span><ruby>制作期間<rt>せいさくきかん</rt></ruby>はどのくらいかかりますか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            <ruby>通常<rt>つうじょう</rt></ruby>3〜4<ruby>週間<rt>しゅうかん</rt></ruby>です。お<ruby>急ぎ<rt>いそぎ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>はご<ruby>相談<rt>そうだん</rt></ruby>ください。<ruby>状況<rt>じょうきょう</rt></ruby>によって対<ruby>応<rt>おう</rt></ruby>できる<ruby>場合<rt>ばあい</rt></ruby>があります。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span>カスタムオーダーは<ruby>可能<rt>かのう</rt></ruby>ですか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            はい、カスタムオーダーを<ruby>承っています<rt>うけたまわっています</rt></ruby>。カラーや<ruby>素材<rt>そざい</rt></ruby>の<ruby>変更<rt>へんこう</rt></ruby>、モチーフのご<ruby>希望<rt>きぼう</rt></ruby>など、お気<ruby>軽<rt>がる</rt></ruby>にオーダーフォームよりご<ruby>相談<rt>そうだん</rt></ruby>ください。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span><ruby>支払い<rt>しはらい</rt></ruby>方<ruby>法<rt>ほう</rt></ruby>は<ruby>何<rt>なに</rt></ruby>がありますか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            <ruby>銀行振込<rt>ぎんこうふりこみ</rt></ruby>、PayPay、クレジットカード（Square<ruby>経由<rt>けいゆ</rt></ruby>）に<ruby>対応<rt>たいおう</rt></ruby>しています。<ruby>前払い<rt>まえばらい</rt></ruby>にてお<ruby>願い<rt>ねがい</rt></ruby>いたします。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span><ruby>返品<rt>へんぴん</rt></ruby>・<ruby>交換<rt>こうかん</rt></ruby>は<ruby>可能<rt>かのう</rt></ruby>ですか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            一点物のハンドメイド<ruby>作品<rt>さくひん</rt></ruby>のため、基本的に<ruby>返品<rt>へんぴん</rt></ruby>・<ruby>交換<rt>こうかん</rt></ruby>はお<ruby>受け<rt>うけ</rt></ruby>しておりません。ただし、<ruby>初期不良<rt>しょきふりょう</rt></ruby>や<ruby>配送<rt>はいそう</rt></ruby><ruby>中<rt>ちゅう</rt></ruby>の<ruby>破損<rt>はそん</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は<ruby>対応<rt>たいおう</rt></ruby>いたします。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span><ruby>海外<rt>かいがい</rt></ruby>への<ruby>発送<rt>はっそう</rt></ruby>は<ruby>可能<rt>かのう</rt></ruby>ですか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            <ruby>現在<rt>げんざい</rt></ruby>は<ruby>国内<rt>こくない</rt></ruby><ruby>発送<rt>はっそう</rt></ruby>のみ<ruby>対応<rt>たいおう</rt></ruby>しております。<ruby>海外<rt>かいがい</rt></ruby><ruby>発送<rt>はっそう</rt></ruby>をご<ruby>希望<rt>きぼう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は、個別にご<ruby>相談<rt>そうだん</rt></ruby>ください。
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            <span><ruby>送料<rt>そうりょう</rt></ruby>はいくらですか？</span>
+            <span class="faq-icon">＋</span>
+          </div>
+          <div class="faq-a">
+            <ruby>全国<rt>ぜんこく</rt></ruby><ruby>一律<rt>いちりつ</rt></ruby>¥800（ヤマト<ruby>運輸<rt>うんゆ</rt></ruby>・<ruby>宅配便<rt>たくはいびん</rt></ruby>）です。
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       CONTACT / SNS
+  =========================================== -->
+  <section id="contact" class="section-pad section-dark">
+    <div class="container-sm" style="text-align:center;">
+
+      <div data-aos="fade-up">
+        <div class="gold-diamond" style="margin-bottom:1rem;">Contact</div>
+        <h2 class="section-title" style="margin:.8rem 0;">
+          お<ruby>問い合わせ<rt>といあわせ</rt></ruby>
+        </h2>
+        <div class="gold-line"></div>
+        <p style="color:rgba(250,246,240,.6); font-size:.9rem; line-height:2; margin-bottom:3rem;">
+          ご<ruby>質問<rt>しつもん</rt></ruby>やご<ruby>相談<rt>そうだん</rt></ruby>はお<ruby>気軽<rt>きがる</rt></ruby>にどうぞ。<br>
+          Instagramの DM やメールでも<ruby>受け付けています<rt>うけつけています</rt></ruby>。
+        </p>
+
+        <div class="sns-grid" style="margin-bottom:2.5rem;">
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/yukinko835" target="_blank" rel="noopener" class="sns-btn">
+            <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            @yukinko835
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:yukino.brooch@gmail.com" class="sns-btn">
+            <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            メールでお問い合わせ
+          </a>
+
+        </div>
+
+        <a href="#order-form" class="btn-gold">
+          オーダーフォームへ
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer id="footer">
+    <div class="footer-logo">YUKINO’</div>
+    <div style="font-size:.65rem; letter-spacing:.25em; color:rgba(107,107,107,.4); margin-bottom:1.5rem;">HANDMADE BROOCH</div>
+    <div class="footer-links">
+      <a href="#about"       class="footer-link">ブランドについて</a>
+      <a href="#collection"  class="footer-link">コレクション</a>
+      <a href="#order-guide" class="footer-link">オーダーガイド</a>
+      <a href="#order-form"  class="footer-link">オーダーフォーム</a>
+      <a href="#faq"         class="footer-link">FAQ</a>
+      <a href="#contact"     class="footer-link">お問い合わせ</a>
+    </div>
+    <div style="width:40px; height:1px; background:rgba(171,140,94,.3); margin:.5rem auto 1.5rem;"></div>
+    <p class="footer-copy">&copy; 2024 YUKINO Handmade Brooch. All rights reserved.</p>
+  </footer>
+
+
+  <!-- ==========================================
+       SCRIPTS
+  =========================================== -->
+
+  <!-- AOS v2.3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Lucide Icons v0.536.0 -->
+  <script src="https://unpkg.com/lucide@0.536.0/dist/umd/lucide.min.js"></script>
+
+  <script>
+    // =====================
+    // AOS 初期化
+    // =====================
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60
+    });
+
+    // =====================
+    // Lucide Icons 初期化
+    // =====================
+    lucide.createIcons();
+
+    // =====================
+    // ナビゲーション スクロール効果
+    // =====================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // =====================
+    // モバイルメニュー
+    // =====================
+    const menuBtn   = document.getElementById('menuBtn');
+    const mobileMenu= document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // =====================
+    // 星エフェクト（ヒーロー）
+    // =====================
+    const starsContainer = document.getElementById('starsContainer');
+    for (let i = 0; i < 14; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        width: 1px;
+        height: 1px;
+        opacity: ${Math.random() * 0.25 + 0.05};
+        animation: twinkle ${Math.random() * 4 + 3}s infinite alternate;
+        animation-delay: ${Math.random() * 3}s;
+      `;
+      starsContainer.appendChild(star);
+    }
+
+    // =====================
+    // FAQ アコーディオン
+    // =====================
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        const isOpen = answer.classList.contains('open');
+        // 全閉じ
+        document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+        // クリックしたもの開く
+        if (!isOpen) {
+          answer.classList.add('open');
+          q.classList.add('active');
+        }
+      });
+    });
+
+    // =====================
+    // 作品チェックボックス → 合計金額 自動計算（個数対応）
+    // =====================
+    const orderGrid  = document.getElementById('orderCheckGrid');
+    const orderTotal = document.getElementById('orderTotal');
+
+    const SHIPPING_FEE = 800;
+    const TAX_RATE = 0.1;
+
+    function calcTotal() {
+      let subtotal = 0;
+      // 商品（個数あり）
+      orderGrid.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+        const item = cb.closest('.order-check-item');
+        const qty = parseInt(item.querySelector('.qty-num').textContent, 10) || 1;
+        subtotal += parseInt(cb.dataset.price, 10) * qty;
+      });
+      // オプション（個数あり・¥1,000）
+      const optionGrid = document.getElementById('optionCheckGrid');
+      if (optionGrid) {
+        optionGrid.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+          const item = cb.closest('.order-check-item');
+          const qty = parseInt(item.querySelector('.qty-num').textContent, 10) || 1;
+          subtotal += parseInt(cb.dataset.price, 10) * qty;
+        });
+      }
+      const tax = Math.floor(subtotal * TAX_RATE);
+      const total = subtotal + tax + SHIPPING_FEE;
+      document.getElementById('orderSubtotal').textContent = '¥' + subtotal.toLocaleString('ja-JP');
+      document.getElementById('orderTax').textContent = '¥' + tax.toLocaleString('ja-JP');
+      orderTotal.textContent = '¥' + total.toLocaleString('ja-JP');
+    }
+
+    // チェックボックス change（チェック解除時に個数リセット）
+    orderGrid.querySelectorAll('.order-check-item').forEach(item => {
+      const cb = item.querySelector('input[type="checkbox"]');
+      item.addEventListener('change', (e) => {
+        if (e.target !== cb) return;
+        item.classList.toggle('checked', cb.checked);
+        if (!cb.checked) item.querySelector('.qty-num').textContent = '1';
+        calcTotal();
+      });
+    });
+
+    // 個数ボタン（＋ / －）
+    orderGrid.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const item  = btn.closest('.order-check-item');
+        const cb    = item.querySelector('input[type="checkbox"]');
+        const numEl = item.querySelector('.qty-num');
+        let qty = parseInt(numEl.textContent, 10) || 1;
+        if (btn.classList.contains('qty-plus')) {
+          if (!cb.checked) { cb.checked = true; item.classList.add('checked'); }
+          qty = Math.min(99, qty + 1);
+        } else {
+          if (qty > 1) {
+            qty--;
+          } else {
+            cb.checked = false;
+            item.classList.remove('checked');
+          }
+        }
+        numEl.textContent = qty;
+        calcTotal();
+      });
+    });
+
+    // オプションチェックボックス change
+    const optionGrid = document.getElementById('optionCheckGrid');
+    if (optionGrid) {
+      optionGrid.querySelectorAll('.order-check-item').forEach(item => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        item.addEventListener('change', (e) => {
+          if (e.target !== cb) return;
+          item.classList.toggle('checked', cb.checked);
+          if (!cb.checked) item.querySelector('.qty-num').textContent = '1';
+          calcTotal();
+        });
+      });
+
+      // オプション個数ボタン
+      optionGrid.querySelectorAll('.qty-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const item  = btn.closest('.order-check-item');
+          const cb    = item.querySelector('input[type="checkbox"]');
+          const numEl = item.querySelector('.qty-num');
+          let qty = parseInt(numEl.textContent, 10) || 1;
+          if (btn.classList.contains('qty-plus')) {
+            if (!cb.checked) { cb.checked = true; item.classList.add('checked'); }
+            qty = Math.min(99, qty + 1);
+          } else {
+            if (qty > 1) {
+              qty--;
+            } else {
+              cb.checked = false;
+              item.classList.remove('checked');
+            }
+          }
+          numEl.textContent = qty;
+          calcTotal();
+        });
+      });
+    }
+
+    // =====================
+    // フォーム送信（Formspree）
+    // =====================
+    const form    = document.getElementById('orderForm');
+    const success = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // バリデーション：テキスト系必須項目
+      const required = form.querySelectorAll('input[required]:not([type="checkbox"]), select[required]');
+      let valid = true;
+      required.forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) {
+          field.style.borderColor = 'var(--ruby)';
+          valid = false;
+        }
+      });
+      // 作品番号が1つ以上選択されているか
+      const checkedItems = form.querySelectorAll('input[name="items"]:checked');
+      if (checkedItems.length === 0) {
+        orderGrid.style.outline = '2px solid var(--ruby)';
+        valid = false;
+      } else {
+        orderGrid.style.outline = 'none';
+      }
+      // プライバシー同意
+      const privacy = form.querySelector('#privacy');
+      if (!privacy.checked) {
+        privacy.style.outline = '2px solid var(--ruby)';
+        valid = false;
+      } else {
+        privacy.style.outline = 'none';
+      }
+      if (!valid) {
+        alert('必須項目をすべてご入力・ご選択ください');
+        return;
+      }
+
+      // 注文内容のサマリーを作成
+      const itemLines = [];
+      orderGrid.querySelectorAll('input[name="items"]:checked').forEach(cb => {
+        const item  = cb.closest('.order-check-item');
+        const qty   = item.querySelector('.qty-num').textContent;
+        const name  = item.querySelector('.order-item-name').textContent;
+        const num   = item.querySelector('.order-item-num').textContent;
+        const price = Number(cb.dataset.price).toLocaleString('ja-JP');
+        itemLines.push(`${num} ${name} × ${qty}（¥${price}）`);
+      });
+      const optionGrid = document.getElementById('optionCheckGrid');
+      optionGrid.querySelectorAll('input[name="option-items"]:checked').forEach(cb => {
+        const item = cb.closest('.order-check-item');
+        const qty  = item.querySelector('.qty-num').textContent;
+        const name = item.querySelector('.order-item-name').textContent;
+        itemLines.push(`[OPTION] ${name} × ${qty}（¥1,000）`);
+      });
+
+      // 送信データ作成
+      const formData = new FormData(form);
+      formData.append('ご注文内容', itemLines.join('\n'));
+      formData.append('作品小計', document.getElementById('orderSubtotal').textContent);
+      formData.append('消費税(10%)', document.getElementById('orderTax').textContent);
+      formData.append('送料', '¥800');
+      formData.append('合計（目安）', orderTotal.textContent);
+      formData.append('_subject', "YUKINO' オーダーフォームより新規ご注文");
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中…';
+
+      try {
+        const res = await fetch('https://formspree.io/f/xlgkowdd', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          alert('送信に失敗しました。お手数ですが、時間をおいて再度お試しください。');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'オーダーを送信する';
+        }
+      } catch (err) {
+        alert('送信に失敗しました。インターネット接続をご確認のうえ、再度お試しください。');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'オーダーを送信する';
+      }
+    });
+
+    // =====================
+    // スター点滅 CSS
+    // =====================
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes twinkle {
+        0%  { opacity: .15; transform: scale(1); }
+        100%{ opacity: .9;  transform: scale(1.6); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
